@@ -1,11 +1,10 @@
 #base
-requests==2.28
+requests==2.31.0
+python-dotenv==0.20.0
 #fastAPI
 fastapi>=0.68.0,<0.69.0
 pydantic>=1.8.0,<2.0.0
 uvicorn>=0.15.0,<0.16.0
-#env
-python-dotenv==0.20.0
 #llm
 langchain==0.0.143
 transformer==4.31.0
