@@ -9,7 +9,7 @@ generator = Generator
 
 router = APIRouter(tags=["Chat"])
 
-@app.post("/")
+@router.post("/")
 async def generate(body: Body):
     return StreamingResponse(
             content=generator.answer(body),
