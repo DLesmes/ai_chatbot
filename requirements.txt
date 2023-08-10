@@ -7,4 +7,4 @@ pydantic>=1.8.0,<2.0.0
 uvicorn>=0.15.0,<0.16.0
 #llm
 langchain==0.0.143
-transformer==4.31.0
+transformers==4.31.0
