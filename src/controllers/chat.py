@@ -2,6 +2,7 @@
 
 from starlette.responses import StreamingResponse
 from fastapi import APIRouter
+from schemas.message import Body
 from services.generator import Generator
 generator = Generator
 

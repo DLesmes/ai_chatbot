@@ -5,7 +5,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 from fastapi import status
 from fastapi.responses import JSONResponse
-from schemas.message import body
 from clients import OpenAssistant
 openassistant = OpenAssistant()
 
