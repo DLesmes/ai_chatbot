@@ -2,7 +2,7 @@
 # uvicorn
 import uvicorn
 from fastapi import FastAPI
-from controllers import predict
+from controllers import chat
 
 # settings
 from settings import Settings
@@ -14,7 +14,7 @@ app = FastAPI(
     root_path=settings.ROOT_PATH,
 )
 
-app.include_router(predict.router)
+app.include_router(chat.router)
 
 
 if __name__ == "__main__":
