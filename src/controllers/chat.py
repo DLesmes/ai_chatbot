@@ -7,11 +7,17 @@ from services.generator import Generator
 generator = Generator
 
 
-router = APIRouter(tags=["Chat"])
+router = APIRouter()
 
-@router.post("/")
+@router.post("/chat",
+    description="""# Generate
+
+Request an answer for the LLM
+    """,
+    tags=["Chat"]
+)
 async def generate(body: Body):
     return StreamingResponse(
-            content=generator.answer(body),
+            content=generator.answer(body.prompt),
             media_type="text/plain"
         )

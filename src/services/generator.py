@@ -16,10 +16,7 @@ class Generator:
         openassistant: An instance of the OpenAssistant class for generating chat completions.
     """
 
-    def __init__(self, openassistant):
-        self.openassistant = openassistant
-
-    def answer(self, body, max_steps=2048 * 2):
+    def answer(self, prompt):
         """
         Generate a answer response using the provided prompt.
 
@@ -31,9 +28,10 @@ class Generator:
             str: A generated chat response.
         """
         try:
-            input = f"<|prompter|>{body.prompt}<|endoftext|><|assistant|>"
+            max_steps=2048 * 2
+            input = f"<|prompter|>{prompt}<|endoftext|><|assistant|>"
             for _ in range(max_steps):
-                completion = self.openassistant.completer(input)
+                completion = openassistant.completer(input)
                 return completion
         except Exception as ex:
             error_info = f"Error when executing Generator.chat: {ex}"
