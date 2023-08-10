@@ -24,7 +24,7 @@ Follow these steps to set up and run the project:
    cd ai_chatbot
    ```
    
-2. Set Up Python Virtual Environment and Install Dependencies:
+2. Set Up Python Virtual Environment with the [requirements.txt](https://github.com/DLesmes/ai_chatbot/blob/main/requirements.txt):
 
     ```
     python3 -m venv venv
@@ -50,9 +50,9 @@ Feel free to contribute and make this chatbot project even better!
 We welcome contributions from the community! If you'd like to contribute, please follow these steps:
 
 * Fork this repository
-* Create a new branch: git checkout -b feature/YourFeatureName
-* Make your changes and commit them: git commit -am 'Add some feature'
-* Push to the branch: git push origin feature/YourFeatureName
+* Create a new branch: `git checkout -b feature/YourFeatureName`
+* Make your changes and commit them: `git commit -am 'Add some feature'`
+* Push to the branch: `git push origin feature/YourFeatureName`
 * Create a pull request
 We look forward to your contributions!
 
