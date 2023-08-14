@@ -8,6 +8,7 @@ from transformers import (
     GPTNeoXForCausalLM
 )
 
+
 class OpenAssistant:
     """
     A class for interacting with the OpenAssistant language model.
@@ -52,7 +53,7 @@ class OpenAssistant:
         """
         logging.info("Loading Model...")
         tokenizer = AutoTokenizer.from_pretrained(
-            checkpoint=self.checkpoint,
+            pretrained_model_name_or_path=self.checkpoint,
             cache_dir=self.cache_dir
         )
         model = GPTNeoXForCausalLM.from_pretrained(
@@ -91,4 +92,5 @@ class OpenAssistant:
         generated_text = tokenizer.decode(tokens[0])
         response = generated_text.split()[-1].split()[0]
         if generated_text.endswith(' '):
-            yield response
+            return response
+        # yield response

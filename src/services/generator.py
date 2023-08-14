@@ -8,12 +8,13 @@ from fastapi.responses import JSONResponse
 from clients.llm import OpenAssistant
 openassistant = OpenAssistant()
 
+
 class Generator:
     """
     A class for generating chat responses using the provided prompt.
 
-    Args:
-        openassistant: An instance of the OpenAssistant class for generating chat completions.
+    # Args:
+    #     openassistant: An instance of the OpenAssistant class for generating chat completions.
     """
 
     def answer(self, prompt):
@@ -21,17 +22,17 @@ class Generator:
         Generate a answer response using the provided prompt.
 
         Args:
-            body (object): The input data containing the prompt.
-            max_steps (int, optional): Maximum number of steps for chat generation. Default is 4096.
+            prompt (str): The input data containing the prompt.
+            # max_steps (int, optional): Maximum number of steps for chat generation. Default is 4096.
 
         Returns:
             str: A generated chat response.
         """
         try:
             max_steps=2048 * 2
-            input = f"<|prompter|>{prompt}<|endoftext|><|assistant|>"
+            input_prompt = f"<|prompter|>{prompt}<|endoftext|><|assistant|>"
             for _ in range(max_steps):
-                completion = openassistant.completer(input)
+                completion = openassistant.completer(input_prompt)
                 return completion
         except Exception as ex:
             error_info = f"Error when executing Generator.chat: {ex}"
