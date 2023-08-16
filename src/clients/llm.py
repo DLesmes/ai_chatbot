@@ -32,7 +32,8 @@ class OpenAssistant:
             repetition_penalty: float = 1.2,
             return_tensors: str = "pt",
             checkpoint: str = "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5",
-            cache_dir: str = '/cache'
+            cache_dir: str = '.cache',
+            model_loaded: bool = False
     ):
         self.checkpoint = checkpoint
         self.cache_dir = cache_dir
@@ -43,6 +44,7 @@ class OpenAssistant:
         self.top_p = top_p
         self.repetition_penalty = repetition_penalty
         self.return_tensors = return_tensors
+        self.model_loaded = model_loaded
 
     def loader(self):
         """
@@ -57,10 +59,11 @@ class OpenAssistant:
             cache_dir=self.cache_dir
         )
         model = GPTNeoXForCausalLM.from_pretrained(
-            checkpoint=self.checkpoint,
+            pretrained_model_name_or_path=self.checkpoint,
             cache_dir=self.cache_dir,
             device_map="auto"
         ).half()
+        self.model_loaded = True
         logging.info("Model loaded!")
         return tokenizer, model
 
@@ -74,7 +77,10 @@ class OpenAssistant:
         Yields:
             str: A generated completion response.
         """
-        tokenizer, model = self.loader()
+        if self.model_loaded:
+            logging.info("Model already loaded!")
+        else:
+            tokenizer, model = self.loader()
         inputs = tokenizer(
             input_text,
             return_tensors="pt"
